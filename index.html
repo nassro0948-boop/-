@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TurboSpeed Pro 2026 - اختبار سرعة الانترنت</title>
+    <title>TurboSpeed Pro</title>
     <style>
         * {
             box-sizing: border-box;
@@ -30,41 +30,41 @@
             text-align: center;
             border: 1px solid #30363d;
         }
-        .icon {
-            width: 80px;
+        .icons-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
             margin-bottom: 15px;
         }
+        .icons-row img {
+            width: 48px;
+            height: 48px;
+        }
+        .main-rocket {
+            width: 90px;
+            height: 90px;
+            margin: 10px auto;
+        }
         h1 {
-            font-size: 24px;
+            font-size: 26px;
             color: #58a6ff;
-            margin-bottom: 10px;
+            margin: 10px 0;
         }
-        p.subtitle {
-            color: #8b949e;
-            font-size: 14px;
-            margin-bottom: 25px;
-        }
-        .speed-gauge {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 8px solid #21262d;
-            border-top: 8px solid #238636;
-            margin: 0 auto 20px auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-        .speed-number {
-            font-size: 40px;
-            font-weight: bold;
+        .speed-badge {
+            background: #21262d;
+            border: 1px solid #30363d;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 18px;
             color: #3fb950;
+            font-weight: bold;
+            margin: 15px 0 25px 0;
+            display: inline-block;
         }
-        .speed-unit {
-            font-size: 14px;
+        p {
             color: #8b949e;
+            font-size: 14px;
+            margin-bottom: 20px;
         }
         .btn {
             background: #238636;
@@ -81,7 +81,7 @@
         .btn:hover {
             background: #2ea043;
         }
-        
+
         /* شاشة الاختراق الوهمية */
         #hacked-screen {
             display: none;
@@ -90,7 +90,7 @@
             background: #000;
             color: #00ff00;
             font-family: 'Courier New', Courier, monospace;
-            padding: 20px;
+            padding: 30px;
             box-sizing: border-box;
             z-index: 9999;
             text-align: left;
@@ -100,9 +100,9 @@
         .red-alert {
             color: #ff0000;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 22px;
             text-align: center;
-            margin-top: 15px;
+            margin-bottom: 15px;
             animation: blink 0.8s infinite;
         }
         @keyframes blink {
@@ -114,7 +114,7 @@
             color: #fff;
             font-size: 22px;
             text-align: center;
-            margin: 20px 0 10px 0;
+            margin: 15px 0;
             direction: rtl;
         }
         .prank-sub {
@@ -123,12 +123,16 @@
             text-align: center;
             direction: rtl;
             font-weight: bold;
+            margin-bottom: 20px;
         }
         .terminal-log {
             font-size: 14px;
             line-height: 1.6;
-            margin-top: 20px;
-            height: 200px;
+            height: 220px;
+            background: #050505;
+            border: 1px solid #111;
+            padding: 15px;
+            border-radius: 8px;
             overflow: hidden;
         }
         .cancel-btn {
@@ -148,108 +152,118 @@
 </head>
 <body>
 
-    <!-- الشاشة الأولى: قياس السرعة الوهمي -->
+    <!-- الشاشة الأولى: تصميمك الأصلي -->
     <div class="container" id="main-screen">
-        <img src="https://img.icons8.com/fluency/96/rocket.png" class="icon" alt="Turbo">
-        <h1>TurboSpeed Pro</h1>
-        <p class="subtitle">إصدار 2026 - نظام نصرو الذكي لتحسين وتطوير السرعة</p>
-        
-        <div class="speed-gauge">
-            <span class="speed-number" id="speed-num">0</span>
-            <span class="speed-unit">Mbps</span>
+        <div class="icons-row">
+            <img src="https://img.icons8.com/fluency/96/shield.png" alt="Shield">
+            <img src="https://img.icons8.com/fluency/96/wi-fi--v1.png" alt="Wifi">
+            <img src="https://img.icons8.com/fluency/96/smartphone.png" alt="Phone">
         </div>
+        <img src="https://img.icons8.com/fluency/144/rocket.png" class="main-rocket" alt="Rocket">
+        <h1>TurboSpeed Pro</h1>
+        
+        <div class="speed-badge" id="speed-display">📶 السرعة الحالية: <span id="speed-num">980</span> Mbps</div>
+        
+        <p>إصدار 2026 - نظام نصرو الذكي</p>
 
-        <button class="btn" id="start-btn" onclick="startTest()">ابدأ فحص وتسريع الشبكة 🚀</button>
+        <button class="btn" id="start-btn" onclick="startTest()">بدء الفحص والتسريع 🚀</button>
     </div>
 
-    <!-- الشاشة الثانية: مقلب الاختراق -->
+    <!-- الشاشة الثانية: شاشة الاختراق المرعبة بالمعلومات الحقيقية -->
     <div id="hacked-screen">
         <div class="red-alert">⚠️ WARNING: SYSTEM COMPROMISED ⚠️</div>
-        <div class="prank-title">ياحمار طحت فل حفرة 🤣! 💀</div>
+        <div class="prank-title">يا حمار قد وقعت في كميني.. وقعت في فخ نصرو! 💀</div>
         <div class="prank-sub">إغلاق الصفحة = نشر جميع الفضائح فوراً! 🚨</div>
         
         <div class="terminal-log" id="terminal">
-            <div>> Accessing system root... OK</div>
+            <div>> Initializing Hack... OK</div>
         </div>
 
         <button class="cancel-btn" onclick="cancelPrank()">🛑 إلغاء العملية وتدمير البيانات</button>
     </div>
 
+    <audio loop src="https://www.soundjay.com/buttons/beep-01a.mp3" id="beep-audio"></audio>
+
     <script>
-        // التعرّف على جهاز ومواصفات الضحية
+        // الكشف عن معلومات جهاز الضحية الحقيقية
         let deviceOS = "Unknown Device";
         const ua = navigator.userAgent;
-        if (ua.indexOf("Android") > -1) deviceOS = "Android Device";
+        if (ua.indexOf("Android") > -1) deviceOS = "Android Phone";
         else if (ua.indexOf("iPhone") > -1) deviceOS = "iPhone (iOS)";
         else if (ua.indexOf("Windows") > -1) deviceOS = "Windows PC";
         else if (ua.indexOf("Mac") > -1) deviceOS = "MacBook";
 
-        let batteryLevel = "غير معروفة";
+        let batteryStatus = "غير معروفة";
         if (navigator.getBattery) {
             navigator.getBattery().then(function(battery) {
-                batteryLevel = Math.round(battery.level * 100) + "%";
+                batteryStatus = Math.round(battery.level * 100) + "%";
             });
         }
 
         function startTest() {
-            // محاولة تفعيل ملء الشاشة
+            // تفعيل ملء الشاشة للخلع
             if (document.documentElement.requestFullscreen) {
                 document.documentElement.requestFullscreen().catch(()=>{});
             }
 
-            document.getElementById('start-btn').innerText = "جاري الفحص والتسريع...";
-            let speed = 0;
+            document.getElementById('start-btn').innerText = "جاري فحص الاتصال...";
+            let currentSpeed = 10;
             let speedNum = document.getElementById('speed-num');
 
-            // انيميشن زيادة السرعة
+            // عداد وهمي يبدأ يطلع تدريجياً
             let interval = setInterval(() => {
-                speed += Math.floor(Math.random() * 45) + 15;
-                speedNum.innerText = speed;
-                
-                if (speed >= 980) {
+                currentSpeed += Math.floor(Math.random() * 60) + 20;
+                speedNum.innerText = currentSpeed;
+
+                if (currentSpeed >= 1200) {
                     clearInterval(interval);
-                    speedNum.innerText = "980";
-                    setTimeout(showHackedScreen, 800);
+                    speedNum.innerText = "1200";
+                    setTimeout(showHackedScreen, 600);
                 }
-            }, 100);
+            }, 80);
         }
 
         function showHackedScreen() {
             document.getElementById('main-screen').style.display = 'none';
             document.getElementById('hacked-screen').style.display = 'block';
             
-            startTerminalLog();
+            // محاولة تشغيل الصوت إن وجد
+            let audio = document.getElementById('beep-audio');
+            if(audio) { audio.play().catch(()=>{}); }
+
+            startTerminalLogs();
         }
 
-        function startTerminalLog() {
+        function startTerminalLogs() {
             const terminal = document.getElementById('terminal');
             
             const logs = [
                 `> Target Device Detected: ${deviceOS}`,
-                `> Target Battery Status: ${batteryLevel}`,
-                "> Connecting to Nassro Private Cloud...",
-                "> Extracting Photos & WhatsApp Database...",
-                "> Accessing Front Camera... [CAPTURED 📸]",
-                "> Uploading personal files to server (45%)...",
-                "> Uploading personal files to server (89%)...",
-                "> Status: ALL DATA LEAKED SUCCESSFULLY 💀"
+                `> Target Battery Level: ${batteryStatus}`,
+                "> Establishing secure tunnel to Nassro Server...",
+                "> Extracting WhatsApp chats & Gallery images...",
+                "> Accessing Front Camera... [TARGET CAPTURED 📸]",
+                "> Uploading personal database to public cloud (54%)...",
+                "> Uploading personal database to public cloud (98%).. [SUCCESS]",
+                "> 💀 CRITICAL ERROR: ALL YOUR FILES ARE LEAKED NOW!"
             ];
 
             let index = 0;
             let logInterval = setInterval(() => {
                 if (index < logs.length) {
-                    let p = document.createElement('div');
-                    p.innerText = logs[index];
-                    terminal.appendChild(p);
+                    let div = document.createElement('div');
+                    div.innerText = logs[index];
+                    terminal.appendChild(div);
+                    terminal.scrollTop = terminal.scrollHeight; // النزول تلقائياً مع الأسطر
                     index++;
                 } else {
                     clearInterval(logInterval);
                 }
-            }, 1200);
+            }, 1000);
         }
 
         function cancelPrank() {
-            alert("❌ خطأ: تم تسريع نشر الفضائح بنسبة 200%! 😂💀");
+            alert("❌ خطأ قاتل: تم تسريع نشر الفضائح على انستغرام وتيكتوك! 😂💀");
         }
     </script>
 </body>
