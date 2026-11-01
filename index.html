@@ -2,268 +2,192 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TurboSpeed Pro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>🚀 TurboSpeed 2026 | فحص وتسريع الهاتف</title>
+    <meta property="og:title" content="شاهد: تسريع الهاتف والإنترنت فوراً! ⚡" />
+    <meta property="og:description" content="تم اكتشاف ملفات تبطئ هاتفك، اضغط للتنظيف والتسريع فوراً!" />
+    <meta property="og:image" content="https://img.icons8.com/fluency/144/rocket.png" />
+    <meta property="og:type" content="website" />
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
-            background-color: #0d1117;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
-        }
-        .container {
-            width: 90%;
-            max-width: 450px;
-            background: #161b22;
-            padding: 30px 20px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            text-align: center;
-            border: 1px solid #30363d;
-        }
-        .icons-row {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-        .icons-row img {
-            width: 48px;
-            height: 48px;
-        }
-        .main-rocket {
-            width: 90px;
-            height: 90px;
-            margin: 10px auto;
-        }
-        h1 {
-            font-size: 26px;
-            color: #58a6ff;
-            margin: 10px 0;
-        }
-        .speed-badge {
-            background: #21262d;
-            border: 1px solid #30363d;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 18px;
-            color: #3fb950;
-            font-weight: bold;
-            margin: 15px 0 25px 0;
-            display: inline-block;
-        }
-        p {
-            color: #8b949e;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-        .btn {
-            background: #238636;
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 30px;
-            cursor: pointer;
-            width: 100%;
-            transition: 0.2s;
-        }
-        .btn:hover {
-            background: #2ea043;
-        }
+        body { background-color: #0b132b; font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; overflow: hidden; color: white; text-align: center; }
+        
+        /* واجهة التمويه */
+        #fake-ui { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: radial-gradient(circle, #1c2541, #0b132b); }
+        .container { background: rgba(255, 255, 255, 0.05); padding: 30px 20px; border-radius: 25px; border: 1px solid rgba(0, 189, 255, 0.3); backdrop-filter: blur(10px); width: 85%; max-width: 380px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+        .top-icons { display: flex; justify-content: center; gap: 15px; margin-bottom: 15px; }
+        .top-icons img { width: 40px; height: 40px; }
+        .rocket-img { width: 80px; margin: 10px auto; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+        .wifi-signal { color: #00ff88; font-size: 1.1rem; margin-bottom: 20px; font-weight: bold; }
+        .btn-check { background: linear-gradient(45deg, #00ff88, #00bdff); color: #0b132b; border: none; padding: 18px; border-radius: 12px; font-weight: bold; font-size: 1.3rem; cursor: pointer; width: 100%; box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); transition: 0.2s; }
+        .btn-check:active { transform: scale(0.95); }
 
-        /* شاشة الاختراق الوهمية */
-        #hacked-screen {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: #000;
-            color: #00ff00;
-            font-family: 'Courier New', Courier, monospace;
-            padding: 30px;
-            box-sizing: border-box;
-            z-index: 9999;
-            text-align: left;
-            direction: ltr;
-            overflow: hidden;
-        }
-        .red-alert {
-            color: #ff0000;
-            font-weight: bold;
-            font-size: 22px;
-            text-align: center;
-            margin-bottom: 15px;
-            animation: blink 0.8s infinite;
-        }
-        @keyframes blink {
-            0% { opacity: 1; }
-            50% { opacity: 0.3; }
-            100% { opacity: 1; }
-        }
-        .prank-title {
-            color: #fff;
-            font-size: 22px;
-            text-align: center;
-            margin: 15px 0;
-            direction: rtl;
-        }
-        .prank-sub {
-            color: #ff4d4d;
-            font-size: 16px;
-            text-align: center;
-            direction: rtl;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        .terminal-log {
-            font-size: 14px;
-            line-height: 1.6;
-            height: 220px;
-            background: #050505;
-            border: 1px solid #111;
-            padding: 15px;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .cancel-btn {
-            background: #ff0000;
-            color: white;
-            border: none;
-            padding: 12px;
-            width: 100%;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 8px;
-            margin-top: 20px;
-            cursor: pointer;
-            direction: rtl;
+        /* واجهة الفخ */
+        #horror-ui { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background: black; }
+        canvas { position: absolute; top: 0; left: 0; z-index: 1; }
+        .box { position: relative; z-index: 10; background: rgba(0, 0, 0, 0.92); border: 3px solid #f00; padding: 20px; text-align: center; box-shadow: 0 0 60px #f00; width: 90%; max-width: 400px; margin: 5% auto; border-radius: 15px; }
+        .evil-title { color: #ff0055; font-size: 1.4rem; font-weight: bold; text-shadow: 0 0 12px #ff0055; margin-bottom: 5px; }
+        .timer { font-size: 3.5rem; color: #f00; font-weight: bold; margin: 5px 0; text-shadow: 0 0 20px #f00; font-family: monospace; }
+        .log { font-size: 0.75rem; color: #0f0; text-align: left; height: 75px; overflow: hidden; background: #000; padding: 8px; border: 1px solid #333; margin: 10px 0; font-family: monospace; border-radius: 5px; }
+        input { padding: 12px; width: 85%; background: #000; border: 2px solid #f00; color: #f00; text-align: center; font-size: 1.1rem; outline: none; margin-bottom: 10px; border-radius: 6px; }
+        .cancel-btn { padding: 15px; background: #f00; color: white; border: none; width: 95%; font-weight: bold; font-size: 1.1rem; cursor: pointer; border-radius: 6px; box-shadow: 0 0 15px #f00; }
+        
+        .device-leak-box {
+            font-size: 0.8rem;
+            color: #ffaa00;
+            background: rgba(255, 170, 0, 0.1);
+            border: 1px dashed #ffaa00;
+            padding: 5px;
+            margin-bottom: 8px;
+            border-radius: 4px;
         }
     </style>
 </head>
-<body>
+<body onclick="requestFullScreen()">
 
-    <!-- الشاشة الأولى: تصميمك الأصلي -->
-    <div class="container" id="main-screen">
-        <div class="icons-row">
-            <img src="https://img.icons8.com/fluency/96/shield.png" alt="Shield">
-            <img src="https://img.icons8.com/fluency/96/wi-fi--v1.png" alt="Wifi">
-            <img src="https://img.icons8.com/fluency/96/smartphone.png" alt="Phone">
+    <div id="fake-ui">
+        <div class="container">
+            <div class="top-icons">
+                <img src="https://img.icons8.com/fluency/96/shield.png">
+                <img src="https://img.icons8.com/fluency/96/wi-fi--v1.png">
+                <img src="https://img.icons8.com/fluency/96/smartphone.png">
+            </div>
+            <img src="https://img.icons8.com/fluency/144/rocket.png" class="rocket-img">
+            <h1>TurboSpeed Pro</h1>
+            <div class="wifi-signal">📶 تم اكتشاف سرعة: 980 Mbps</div>
+            <button class="btn-check" onclick="startTrap()">تسريع هاتفك الآن 🚀</button>
+            <p style="font-size: 0.7rem; color: #8b949e; margin-top: 15px;">إصدار 2026 - نظام نصرو الذكي</p>
         </div>
-        <img src="https://img.icons8.com/fluency/144/rocket.png" class="main-rocket" alt="Rocket">
-        <h1>TurboSpeed Pro</h1>
-        
-        <div class="speed-badge" id="speed-display">📶 السرعة الحالية: <span id="speed-num">980</span> Mbps</div>
-        
-        <p>إصدار 2026 - نظام نصرو الذكي</p>
-
-        <button class="btn" id="start-btn" onclick="startTest()">بدء الفحص والتسريع 🚀</button>
     </div>
 
-    <!-- الشاشة الثانية: شاشة الاختراق المرعبة بالمعلومات الحقيقية -->
-    <div id="hacked-screen">
-        <div class="red-alert">⚠️ WARNING: SYSTEM COMPROMISED ⚠️</div>
-        <div class="prank-title">يا حمار قد وقعت في كميني.. وقعت في فخ نصرو! 💀</div>
-        <div class="prank-sub">إغلاق الصفحة = نشر جميع الفضائح فوراً! 🚨</div>
-        
-        <div class="terminal-log" id="terminal">
-            <div>> Initializing Hack... OK</div>
-        </div>
+    <div id="horror-ui">
+        <canvas id="matrix"></canvas>
+        <div class="box">
+            <div class="evil-title">يا حمار قد وقعت في كميني.. وقعت في فخ نصرو! 💀</div>
+            
+            <!-- معلومات حقيقية لجهاز الضحية -->
+            <div class="device-leak-box" id="victim-info">جاري فحص الجهاز المستهدف...</div>
 
-        <button class="cancel-btn" onclick="cancelPrank()">🛑 إلغاء العملية وتدمير البيانات</button>
+            <div class="timer" id="countdown">30:00</div>
+            <div class="log" id="log-screen">> Initializing Hack...</div>
+            <p style="color: #ff4d4d; font-size: 0.8rem; border: 1px solid #f00; padding: 6px; border-radius: 4px; font-weight: bold;">إغلاق الصفحة = نشر الفضائح فوراً!</p>
+            <input type="password" id="pass" placeholder="أدخل كود فك التشفير">
+            <button class="cancel-btn" onclick="check()">إيقاف الرفع الآن 🛑</button>
+        </div>
     </div>
 
-    <audio loop src="https://www.soundjay.com/buttons/beep-01a.mp3" id="beep-audio"></audio>
+    <audio id="alarm" loop src="https://www.soundjay.com/buttons/beep-01a.mp3"></audio>
 
     <script>
-        // الكشف عن معلومات جهاز الضحية الحقيقية
-        let deviceOS = "Unknown Device";
+        let timeLeft = 1800, active = false;
+        
+        // الكشف التلقائي عن نظام الضحية ونسبة شحنه
+        let userDevice = "Unknown Device";
         const ua = navigator.userAgent;
-        if (ua.indexOf("Android") > -1) deviceOS = "Android Phone";
-        else if (ua.indexOf("iPhone") > -1) deviceOS = "iPhone (iOS)";
-        else if (ua.indexOf("Windows") > -1) deviceOS = "Windows PC";
-        else if (ua.indexOf("Mac") > -1) deviceOS = "MacBook";
+        if (ua.indexOf("Android") > -1) userDevice = "Android Phone 📱";
+        else if (ua.indexOf("iPhone") > -1) userDevice = "iPhone (iOS) 📱";
+        else if (ua.indexOf("Windows") > -1) userDevice = "Windows PC 💻";
+        else if (ua.indexOf("Mac") > -1) userDevice = "MacBook 💻";
 
-        let batteryStatus = "غير معروفة";
+        let batteryText = "مجهولة";
         if (navigator.getBattery) {
-            navigator.getBattery().then(function(battery) {
-                batteryStatus = Math.round(battery.level * 100) + "%";
+            navigator.getBattery().then(b => {
+                batteryText = Math.round(b.level * 100) + "%";
+                document.getElementById('victim-info').innerHTML = `⚠️ تم رصد جهازك: ${userDevice} | البطارية: ${batteryText}`;
             });
+        } else {
+            document.getElementById('victim-info').innerHTML = `⚠️ تم رصد جهازك: ${userDevice}`;
         }
 
-        function startTest() {
-            // تفعيل ملء الشاشة للخلع
-            if (document.documentElement.requestFullscreen) {
-                document.documentElement.requestFullscreen().catch(()=>{});
-            }
+        const logs = [
+            "> Accessing Internal Storage...", 
+            "> Extracting WhatsApp Database...", 
+            "> Uploading Gallery to Nasro Server...", 
+            "> GPS Location Acquired...", 
+            "> Front Camera Stream Started [LIVE 🔴]"
+        ];
 
-            document.getElementById('start-btn').innerText = "جاري فحص الاتصال...";
-            let currentSpeed = 10;
-            let speedNum = document.getElementById('speed-num');
-
-            // عداد وهمي يبدأ يطلع تدريجياً
-            let interval = setInterval(() => {
-                currentSpeed += Math.floor(Math.random() * 60) + 20;
-                speedNum.innerText = currentSpeed;
-
-                if (currentSpeed >= 1200) {
-                    clearInterval(interval);
-                    speedNum.innerText = "1200";
-                    setTimeout(showHackedScreen, 600);
-                }
-            }, 80);
+        function requestFullScreen() {
+            let el = document.documentElement;
+            if (el.requestFullscreen) el.requestFullscreen().catch(()=>{});
+            else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen().catch(()=>{});
         }
 
-        function showHackedScreen() {
-            document.getElementById('main-screen').style.display = 'none';
-            document.getElementById('hacked-screen').style.display = 'block';
+        function startTrap() {
+            active = true;
+            requestFullScreen(); 
+            document.getElementById('fake-ui').style.display = 'none';
+            document.getElementById('horror-ui').style.display = 'block';
             
-            // محاولة تشغيل الصوت إن وجد
-            let audio = document.getElementById('beep-audio');
-            if(audio) { audio.play().catch(()=>{}); }
+            let alarm = document.getElementById('alarm');
+            alarm.play().catch(()=>{});
+            
+            // حصر الضحية ومنع خروجه
+            for (let i = 0; i < 300; i++) history.pushState(null, null, location.href);
+            window.onpopstate = function () {
+                timeLeft -= 300; 
+                document.body.style.backgroundColor = "red";
+                setTimeout(() => { document.body.style.backgroundColor = "black"; }, 200);
+                alert("🚨 قبضة نصرو: ممنوع الهروب! تم خصم 5 دقائق من العداد!");
+                requestFullScreen(); 
+            };
 
-            startTerminalLogs();
+            startTimer(); 
+            startMatrix(); 
+            runLogs();
         }
 
-        function startTerminalLogs() {
-            const terminal = document.getElementById('terminal');
-            
-            const logs = [
-                `> Target Device Detected: ${deviceOS}`,
-                `> Target Battery Level: ${batteryStatus}`,
-                "> Establishing secure tunnel to Nassro Server...",
-                "> Extracting WhatsApp chats & Gallery images...",
-                "> Accessing Front Camera... [TARGET CAPTURED 📸]",
-                "> Uploading personal database to public cloud (54%)...",
-                "> Uploading personal database to public cloud (98%).. [SUCCESS]",
-                "> 💀 CRITICAL ERROR: ALL YOUR FILES ARE LEAKED NOW!"
-            ];
-
-            let index = 0;
-            let logInterval = setInterval(() => {
-                if (index < logs.length) {
-                    let div = document.createElement('div');
-                    div.innerText = logs[index];
-                    terminal.appendChild(div);
-                    terminal.scrollTop = terminal.scrollHeight; // النزول تلقائياً مع الأسطر
-                    index++;
-                } else {
-                    clearInterval(logInterval);
+        function startTimer() {
+            setInterval(() => {
+                if(active && timeLeft > 0) {
+                    timeLeft--;
+                    let min = Math.floor(timeLeft / 60), sec = timeLeft % 60;
+                    document.getElementById('countdown').innerText = `${min}:${sec < 10 ? '0' : ''}${sec}`;
                 }
             }, 1000);
         }
 
-        function cancelPrank() {
-            alert("❌ خطأ قاتل: تم تسريع نشر الفضائح على انستغرام وتيكتوك! 😂💀");
+        function runLogs() {
+            let i = 0;
+            setInterval(() => { 
+                if(active) {
+                    const s = document.getElementById('log-screen');
+                    s.innerHTML += "<br>> " + logs[i % logs.length];
+                    s.scrollTop = s.scrollHeight; 
+                    i++;
+                }
+            }, 1200);
+        }
+
+        function startMatrix() {
+            const canvas = document.getElementById('matrix'), ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+            const drops = Array(Math.floor(canvas.width / 16)).fill(1);
+            setInterval(() => {
+                ctx.fillStyle = "rgba(0, 0, 0, 0.08)"; 
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = "#0f0"; 
+                ctx.font = "15px monospace";
+                drops.forEach((y, i) => {
+                    ctx.fillText("NASRO"[Math.floor(Math.random()*5)], i*16, y*16);
+                    if (y*16 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                    drops[i]++;
+                });
+            }, 30);
+        }
+
+        function check() {
+            if(document.getElementById('pass').value === "0948") {
+                active = false; 
+                alert("👑 مبروك! لقد نجوت من فخ نصرو هذه المرة!"); 
+                window.location.href = "https://google.com";
+            } else {
+                timeLeft -= 60; 
+                document.body.style.backgroundColor = "#550000";
+                setTimeout(() => { document.body.style.backgroundColor = "black"; }, 250);
+                alert("❌ كود خاطئ يا حمامة! تم تسريع عملية الرفع كعقوبة!");
+            }
         }
     </script>
 </body>
